@@ -70,7 +70,7 @@ $splitFiles | ForEach-Object { Move-Item -Path $_.FullName -Destination $backupD
 $splitFilesCount = $splitFiles.Count
 Add-Content -Path $logFilePath -Value "Backup file split into $splitFilesCount files."
 
-iif ($EnableEncryption) {
+if ($EnableEncryption) {
     # Iterate through the split files and encrypt each one
     foreach ($splitFile in $splitFiles) {
         $encryptedFileName = "$($splitFile.Name).enc"
